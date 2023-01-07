@@ -1,18 +1,14 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="sq_Insert_ControleID" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="arg_in_strCodigo" Type="InArgument(x:String)" />
-    <x:Property Name="arg_in_strUrl" Type="InArgument(x:String)" />
   </x:Members>
   <this:sq_Insert_ControleID.arg_in_strCodigo>
     <InArgument x:TypeArguments="x:String" />
   </this:sq_Insert_ControleID.arg_in_strCodigo>
-  <this:sq_Insert_ControleID.arg_in_strUrl>
-    <InArgument x:TypeArguments="x:String" />
-  </this:sq_Insert_ControleID.arg_in_strUrl>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>724.8,1279.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>668,1225</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>sq_Insert_ControleID_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="54">
@@ -94,7 +90,7 @@
       <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Insere no banco de dados o registro do ID para que depois seja consultado em caso de duplicidade." DisplayName="sq_Insert_ControleID" sap:VirtualizedContainerService.HintSize="437.6,1214.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Insere no banco de dados o registro do ID para que depois seja consultado em caso de duplicidade." DisplayName="sq_Insert_ControleID" sap:VirtualizedContainerService.HintSize="496,1160" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="var_strWorflow" />
       <Variable x:TypeArguments="ui:DatabaseConnection" Name="var_dbConnection" />
@@ -105,7 +101,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Assign - Título Workflow" sap:VirtualizedContainerService.HintSize="375.2,69.6" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign DisplayName="Assign - Título Workflow" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[var_strWorflow]</OutArgument>
       </Assign.To>
@@ -113,23 +109,21 @@
         <InArgument x:TypeArguments="x:String">sq_Insert_ControleID</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_Log_InicioFim.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="375.2,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="sq_Log_InicioFim.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_Log_InicioFim.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="sq_Log_InicioFim.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:Boolean" x:Key="arg_in_booInicio">True</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="arg_in_strWorkflow">[var_strWorflow]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_SQLite_Connection.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="375.2,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="SQLITE\sq_SQLite_Connection.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_SQLite_Connection.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="SQLITE\sq_SQLite_Connection.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="ui:DatabaseConnection" x:Key="arg_out_dbConnection">
-          <VisualBasicReference x:TypeArguments="ui:DatabaseConnection" ExpressionText="var_dbConnection" />
-        </OutArgument>
+        <OutArgument x:TypeArguments="ui:DatabaseConnection" x:Key="arg_out_dbConnection">[var_dbConnection]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="375.2,284.8" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="5" RetryInterval="00:00:05">
+    <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="434,264" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="5" RetryInterval="00:00:05">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
-          <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Run command" ExistingDbConnection="[var_dbConnection]" sap:VirtualizedContainerService.HintSize="333.6,99.2" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_1" Sql="[&quot;INSERT INTO CONTROLE_ID_URLS ( &quot; +&#xD;&#xA; &quot;   CODIGO,&quot; +&#xD;&#xA; &quot;   URL,&quot; +&#xD;&#xA; &quot;   DATA&quot; +&#xD;&#xA;&quot;) VALUES (&quot; +&#xD;&#xA; &quot;   '&quot; + arg_in_strCodigo +&quot;',&quot; +&#xD;&#xA; &quot;   '&quot; + arg_in_strUrl +&quot;',&quot; +&#xD;&#xA; &quot;   Date('now','localtime')&quot; +&#xD;&#xA;&quot;)&quot;]">
+          <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Run command" ExistingDbConnection="[var_dbConnection]" sap:VirtualizedContainerService.HintSize="334,89" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_1" Sql="[&quot;INSERT INTO CONTROLE_ID_URLS ( &quot; +&#xD;&#xA; &quot;   CODIGO,&quot; +&#xD;&#xA; &quot;   DATA&quot; +&#xD;&#xA;&quot;) VALUES (&quot; +&#xD;&#xA; &quot;   '&quot; + arg_in_strCodigo +&quot;',&quot; +&#xD;&#xA; &quot;   Date('now','localtime')&quot; +&#xD;&#xA;&quot;)&quot;]">
             <ui:ExecuteNonQuery.Parameters>
               <scg:Dictionary x:TypeArguments="x:String, Argument" />
             </ui:ExecuteNonQuery.Parameters>
@@ -140,11 +134,9 @@
         <ActivityFunc x:TypeArguments="x:Boolean" />
       </ui:RetryScope.Condition>
     </ui:RetryScope>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_SQLite_Disconnect.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="375.2,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="SQLITE\sq_SQLite_Disconnect.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_SQLite_Disconnect.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="SQLITE\sq_SQLite_Disconnect.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="arg_in_dbConnection">
-          <VisualBasicValue x:TypeArguments="ui:DatabaseConnection" ExpressionText="var_dbConnection" />
-        </InArgument>
+        <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="arg_in_dbConnection">[var_dbConnection]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="sq_Log_InicioFim.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="375.2,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="sq_Log_InicioFim.xaml">
